@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  testDb:
+    image: postgres:14-alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - ~/apps/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=testDb
+      - POSTGRES_USER=testDb
+      - POSTGRES_DB=testDb
+
+
+  adminer:
+    image: adminer
+    ports:
+      - 7777:8080
+    environment:
+      ADMINER_DEFAULT_SERVER: testDb
+    depends_on:
+      - testDb
