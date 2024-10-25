@@ -32,4 +32,8 @@ public class Identity {
     public boolean isValid(String token) {
         return this.token.equals(token) && !isExpired();
     }
+
+    public PrivateUser getUser() {
+        return this.user;
+    }
 }

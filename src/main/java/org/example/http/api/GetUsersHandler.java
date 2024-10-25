@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class GetUsersHandler implements HttpHandler {
+public class GetUsersHandler extends BasicHandler {
     private DataBase db;
     public GetUsersHandler(DataBase db) {
         this.db = db;
@@ -30,9 +30,7 @@ public class GetUsersHandler implements HttpHandler {
             jsonArray.put(user.toJson());
         }
         String response = jsonArray.toString();
-        exchange.getResponseHeaders().set("Content-Type", "application/json");
-        exchange.sendResponseHeaders(200, response.getBytes().length);
-        exchange.getResponseBody().write(response.getBytes());
-        exchange.close();
+
+        this.sendResponse(exchange, response.getBytes());
     }
 }

@@ -4,17 +4,16 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import org.example.DataBase;
 import org.example.Security;
-import org.example.dto.PrivateUser;
 import org.example.utils.Identity;
 import org.json.JSONObject;
 
 import java.io.IOException;
 
-public class LoginHandler extends BasicHandler {
+public class MeHandler extends BasicHandler {
     DataBase dataBase;
     Security security;
 
-    public LoginHandler(DataBase dataBase, Security security) {
+    public MeHandler(DataBase dataBase, Security security) {
         this.dataBase = dataBase;
         this.security = security;
     }
@@ -24,23 +23,13 @@ public class LoginHandler extends BasicHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         String method = exchange.getRequestMethod();
-        if (method.equals("POST")) {
-            String body = new String(exchange.getRequestBody().readAllBytes());
-            JSONObject json = new JSONObject(body);
+        if (method.equals("GET")) {
+            String header = exchange.getRequestHeaders().getFirst("Authorization");
+            String token = security.getTokenFromHeader(header);
 
-            String username = json.getString("username");
-            String password = json.getString("password");
-
-            Identity identity = security.authenticate(username, password);
-
-            if (identity == null) {
-                exchange.sendResponseHeaders(401, 0);
-                exchange.close();
-                return;
-            }
-
+            Identity identity = security.checkToken(token);
             JSONObject responseJSON = new JSONObject();
-            responseJSON.put("token", identity.getToken());
+            responseJSON.put("user", identity.getUser().toJson()d);
             byte[] response = responseJSON.toString().getBytes();
 
             this.sendResponse(exchange, response);

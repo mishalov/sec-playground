@@ -53,4 +53,15 @@ public class Security {
         }
         return null;
     }
+
+    public String getTokenFromHeader(String header) {
+        if (header == null) {
+            return null;
+        }
+        String[] parts = header.split(" ");
+        if (parts.length != 2) {
+            return null;
+        }
+        return parts[1];
+    }
 }

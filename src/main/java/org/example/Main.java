@@ -3,6 +3,7 @@ package org.example;
 import com.sun.net.httpserver.HttpServer;
 import org.example.http.api.GetUsersHandler;
 import org.example.http.api.LoginHandler;
+import org.example.http.api.MeHandler;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -32,6 +33,7 @@ public class Main {
 
         server.createContext("/users", new GetUsersHandler(db));
         server.createContext("/login", new LoginHandler(db, security));
+        server.createContext("/me", new MeHandler(db, security));
         server.start();
     }
 }
