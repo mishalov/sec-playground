@@ -4,6 +4,7 @@ import com.sun.net.httpserver.HttpServer;
 import org.example.http.api.GetUsersHandler;
 import org.example.http.api.LoginHandler;
 import org.example.http.api.MeHandler;
+import org.example.http.api.UpdateUserHandler;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -32,6 +33,7 @@ public class Main {
         Security security = new Security(db);
 
         server.createContext("/users", new GetUsersHandler(db));
+        server.createContext("/user", new UpdateUserHandler(db, security));
         server.createContext("/login", new LoginHandler(db, security));
         server.createContext("/me", new MeHandler(db, security));
         server.start();

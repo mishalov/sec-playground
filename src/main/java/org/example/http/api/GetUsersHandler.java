@@ -19,6 +19,8 @@ public class GetUsersHandler extends BasicHandler {
 
     @Override
     public void handle(HttpExchange exchange) throws IOException, IOException {
+        this.allowCORS(exchange);
+
         ArrayList<PublicUser> users;
         try {
             users = db.getUsers();

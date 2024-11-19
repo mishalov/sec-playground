@@ -33,7 +33,7 @@ public class DataBase {
     public void reset(){
         try {
             conn.createStatement().execute("DROP TABLE IF EXISTS users");
-            conn.createStatement().execute("CREATE TABLE users (id SERIAL PRIMARY KEY, name VARCHAR(255), phone VARCHAR(255), address VARCHAR(255), password VARCHAR(255), department VARCHAR(255))");
+            conn.createStatement().execute("CREATE TABLE users (id SERIAL PRIMARY KEY, name VARCHAR(255), phone VARCHAR(255), address VARCHAR(255), password VARCHAR(255), department VARCHAR(255), secret VARCHAR(255), avatar VARCHAR(255))");
 
             String jsonObject = Files.readString(Path.of("./src/main/java/resources/users.json"));
             JSONArray jsonArray = new JSONArray(jsonObject);
@@ -44,8 +44,10 @@ public class DataBase {
                 String address = jsonArray.getJSONObject(i).getString("address");
                 String password = Security.encrypt(jsonArray.getJSONObject(i).getString("password"));
                 String department = jsonArray.getJSONObject(i).getString("department");
+                String secret = jsonArray.getJSONObject(i).getString("secret");
+                String avatar = jsonArray.getJSONObject(i).getString("avatar");
 
-                conn.createStatement().execute("INSERT INTO users (name, phone, address, password, department) VALUES ('" + name + "', '" + phone + "', '" + address + "', '" + password + "', '" + department + "')");
+                conn.createStatement().execute("INSERT INTO users (name, phone, address, password, department, secret, avatar) VALUES ('" + name + "', '" + phone + "', '" + address + "', '" + password + "', '" + department + "', '" + secret + "', '" + avatar + "')");
             }
         } catch (SQLException | IOException throwables) {
             throwables.printStackTrace();
@@ -58,7 +60,7 @@ public class DataBase {
         ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM users");
         ArrayList<PublicUser> users = new ArrayList<>();
         while(rs.next()){
-            users.add(new PublicUser(rs.getInt("id"), rs.getString("name")));
+            users.add(new PublicUser(rs.getInt("id"), rs.getString("name"), rs.getString("avatar")));
         }
         return users;
     }
@@ -66,7 +68,18 @@ public class DataBase {
     public PrivateUser getUser(int id) throws SQLException {
         ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM users WHERE id = " + id);
         rs.next();
-        return new PrivateUser(rs.getInt("id"), rs.getString("name"), rs.getString("phone"), rs.getString("address"));
+        return new PrivateUser(
+                rs.getInt("id"),
+                rs.getString("name"),
+                rs.getString("phone"),
+                rs.getString("address"),
+                rs.getString("secret"),
+                rs.getString("avatar"));
+    }
+
+    public PrivateUser updateUser(int id, String name, String secret) throws SQLException {
+       conn.createStatement().execute("UPDATE users SET name = '" + name + "', secret = '" + secret + "' WHERE id = " + id);
+       return getUser(id);
     }
 
     public PrivateUser authenticate(String name, String password) throws SQLException, NoSuchAlgorithmException {
@@ -76,6 +89,13 @@ public class DataBase {
             return null;
         }
 
-        return new PrivateUser(rs.getInt("id"), rs.getString("name"), rs.getString("phone"), rs.getString("address"));
+        return new PrivateUser(
+                rs.getInt("id"),
+                rs.getString("name"),
+                rs.getString("phone"),
+                rs.getString("address"),
+                rs.getString("secret"),
+                rs.getString("avatar")
+        );
     }
 }

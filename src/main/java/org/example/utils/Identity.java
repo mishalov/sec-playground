@@ -6,18 +6,18 @@ import java.time.LocalDateTime;
 
 public class Identity {
     private LocalDateTime expirationDate;
-    final private PrivateUser user;
+    final private int userId;
     private String token;
 
     public Identity(
         LocalDateTime expirationDate,
-        PrivateUser user
+        int userId
     ) {
         this.expirationDate = expirationDate;
-        this.user = user;
+        this.userId = userId;
 
         LocalDateTime now = LocalDateTime.now();
-        this.token = String.valueOf((this.user.id + this.user.name + this.expirationDate.toString() + now.hashCode()).hashCode());
+        this.token = String.valueOf((this.userId + this.expirationDate.toString() + now.hashCode()).hashCode());
     }
 
 
@@ -33,7 +33,7 @@ public class Identity {
         return this.token.equals(token) && !isExpired();
     }
 
-    public PrivateUser getUser() {
-        return this.user;
+    public int getUserId() {
+        return this.userId;
     }
 }

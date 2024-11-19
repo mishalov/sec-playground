@@ -23,6 +23,8 @@ public class LoginHandler extends BasicHandler {
     // Json body with username and password
     @Override
     public void handle(HttpExchange exchange) throws IOException {
+        this.allowCORS(exchange);
+
         String method = exchange.getRequestMethod();
         if (method.equals("POST")) {
             String body = new String(exchange.getRequestBody().readAllBytes());

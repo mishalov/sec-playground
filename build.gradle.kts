@@ -14,6 +14,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
     implementation("org.json:json:20240303")
     implementation("org.postgresql:postgresql:42.3.0")
+    implementation("commons-codec:commons-codec:1.17.1")
 }
 
 tasks.test {

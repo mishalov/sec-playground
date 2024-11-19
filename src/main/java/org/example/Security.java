@@ -26,7 +26,7 @@ public class Security {
                 return null;
             }
 
-            Identity identity = new Identity(expirationDate, user);
+            Identity identity = new Identity(expirationDate, user.getId());
             identities.add(identity);
             return identity;
         } catch (NoSuchAlgorithmException | SQLException e) {
@@ -36,13 +36,10 @@ public class Security {
     }
 
     public static String encrypt(String password) throws NoSuchAlgorithmException {
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
-        byte[] hash = md.digest(password.getBytes());
-        StringBuilder hexString = new StringBuilder();
-        for (byte b : hash) {
-            hexString.append(String.format("%02x", b));
-        }
-        return hexString.toString();
+        String sha256hex = org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);
+
+        return
+            sha256hex;
     }
 
     public Identity checkToken(String token) {
