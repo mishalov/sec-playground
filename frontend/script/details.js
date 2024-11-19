@@ -16,6 +16,7 @@ class Details {
 
     setDetails(me) {
         this.me = me;
+        localStorage.setItem('me', JSON.stringify(me));
     }
 
     toggleEditMode() {

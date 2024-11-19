@@ -9,5 +9,5 @@ Target is to do:
 
 1. Steal any user's secret
 2. Steal all other users data
-3. redirect users to the fishing site (use sap.com for example)
+3. Redirect users to the fishing site (use sap.com for example)
 4. Drop Table

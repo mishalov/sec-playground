@@ -1,5 +1,4 @@
 import API from "./api";
-import { saveToDocument } from "./utils/globalStorage";
 
 class Authentication {
     /**
@@ -8,6 +7,8 @@ class Authentication {
      */
     constructor(api) {
         this.api = api;
+        this.onNotAuthenticated = null;
+        this.onAuthenticated = null;
     }
 
     addEventListener(event, callback) {
