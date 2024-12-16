@@ -22,7 +22,7 @@ public class ResetHandler extends BasicHandler {
         String method = exchange.getRequestMethod();
 
 
-        if (method.equals("POST")) {
+        if (method.equals("GET")) {
             this.dataBase.reset();
             this.security.reset();
             exchange.sendResponseHeaders(200, 0);
