@@ -37,6 +37,9 @@ public class Main {
             server.createContext("/reset", new ResetHandler(db, security));
             // Use this route as a route to some "fake service"
             server.createContext("/side-service", new SideServiceHandler(new SideServiceDataStorage()));
+
+            // Printthat the server is running
+            System.out.println("Server is running on port 8080");
             server.start();
         } catch (Exception e) {
             e.printStackTrace();
