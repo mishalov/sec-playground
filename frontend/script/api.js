@@ -1,5 +1,4 @@
 class API {
-    url = process.env.SEC_PLAYGROUND_BACKEND_URL ?? 'http://localhost:8080/api';
     /**
      * 
      * @param { string } url 
