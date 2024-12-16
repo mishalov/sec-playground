@@ -15,17 +15,15 @@ import java.util.Properties;
 import org.example.dto.PrivateUser;
 import org.example.dto.PublicUser;
 import org.json.JSONArray;
-import io.github.cdimascio.dotenv.Dotenv;
 
 public class DataBase {
     Connection conn = null;
 
     public DataBase() throws SQLException, ClassNotFoundException {
-        Dotenv dotenv = Dotenv.load();
         var env = System.getenv();
-        String username = env.get("SEC_PLAYGROUND_DB") != null ? env.get("SEC_PLAYGROUND_DB") : dotenv.get("SEC_PLAYGROUND_DB");
-        String password = env.get("SEC_PLAYGROUND_PASSWORD") != null ? env.get("SEC_PLAYGROUND_PASSWORD") : dotenv.get("SEC_PLAYGROUND_PASSWORD");
-        String db = env.get("SEC_PLAYGROUND_DB") != null ? env.get("SEC_PLAYGROUND_DB") : dotenv.get("SEC_PLAYGROUND_DB");
+        String username = env.get("SEC_PLAYGROUND_DB") != null ? env.get("SEC_PLAYGROUND_DB") : "testDb";
+        String password = env.get("SEC_PLAYGROUND_PASSWORD") != null ? env.get("SEC_PLAYGROUND_PASSWORD") : "testDb";
+        String db = env.get("SEC_PLAYGROUND_DB") != null ? env.get("SEC_PLAYGROUND_DB") : "testDb";
         String jdbcUrl = "jdbc:postgresql://localhost:5432/" + db;
 
         Properties props = new Properties();

@@ -15,7 +15,6 @@ dependencies {
     implementation("org.json:json:20240303")
     implementation("org.postgresql:postgresql:42.3.0")
     implementation("commons-codec:commons-codec:1.17.1")
-    implementation("io.github.cdimascio:dotenv-java:3.1.0")
 }
 
 tasks.test {
@@ -30,11 +29,4 @@ tasks.jar {
             "Main-Class" to "org.example.Main" // Replace with your main class
         )
     }
-
-    archiveBaseName.set("${project.name}-all")
-    from({
-        configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) }
-    })
-    with(tasks.jar.get() as CopySpec)
-
 }
