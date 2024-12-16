@@ -5,8 +5,8 @@
     "phone": "123-456-7890",
     "address": "123 Main St",
     "department": "Sales",
-    "password": "123456",
-    "secret": "Loves hiking",
+    "password": "A1b2C3d4E5!",
+    "secret": "Loves hiking (1-4)",
     "avatar": "https://i.pravatar.cc/100?img=4"
   },
   {
@@ -15,8 +15,8 @@
     "phone": "444-132-7890",
     "address": "456 Elm St",
     "department": "Marketing",
-    "password": "654321",
-    "secret": "Plays the guitar",
+    "password": "F6g7H8i9J0@",
+    "secret": "Plays the guitar (2-R)",
     "avatar": "https://i.pravatar.cc/100?img=5"
   },
   {
@@ -25,8 +25,8 @@
     "phone": "152-456-7890",
     "address": "789 Pine St",
     "department": "HR",
-    "password": "234567",
-    "secret": "Collects stamps",
+    "password": "K1l2M3n4O5#",
+    "secret": "Collects stamps (3-B)",
     "avatar": "https://i.pravatar.cc/100?img=7"
   },
   {
@@ -35,8 +35,8 @@
     "phone": "432-456-7890",
     "address": "321 Cedar St",
     "department": "IT",
-    "password": "765432",
-    "secret": "Enjoys painting",
+    "password": "P6q7R8s9T0$",
+    "secret": "Enjoys painting (4-F)",
     "avatar": "https://i.pravatar.cc/100?img=9"
   },
   {
@@ -45,8 +45,8 @@
     "phone": "555-123-4567",
     "address": "654 Oak St",
     "department": "Finance",
-    "password": "345678",
-    "secret": "Loves cooking",
+    "password": "U1v2W3x4Y5%",
+    "secret": "Loves cooking (5-X)",
     "avatar": "https://i.pravatar.cc/100?img=11"
   },
   {
@@ -55,8 +55,8 @@
     "phone": "555-234-5678",
     "address": "987 Birch St",
     "department": "Sales",
-    "password": "876543",
-    "secret": "Plays chess",
+    "password": "Z6a7B8c9D0^",
+    "secret": "Plays chess (6-5)",
     "avatar": "https://i.pravatar.cc/100?img=13"
   },
   {
@@ -65,8 +65,8 @@
     "phone": "555-345-6789",
     "address": "147 Willow St",
     "department": "Marketing",
-    "password": "456789",
-    "secret": "Enjoys gardening",
+    "password": "E1f2G3h4I5&",
+    "secret": "Enjoys gardening (7-G)",
     "avatar": "https://i.pravatar.cc/100?img=15"
   },
   {
@@ -75,8 +75,8 @@
     "phone": "555-456-7890",
     "address": "258 Maple St",
     "department": "HR",
-    "password": "987654",
-    "secret": "Loves reading",
+    "password": "J6k7L8m9N0*",
+    "secret": "Loves reading (8-N)",
     "avatar": "https://i.pravatar.cc/100?img=17"
   },
   {
@@ -85,8 +85,8 @@
     "phone": "555-567-8901",
     "address": "369 Spruce St",
     "department": "IT",
-    "password": "567890",
-    "secret": "Enjoys hiking",
+    "password": "O1p2Q3r4S5(",
+    "secret": "Enjoys hiking (9-5)",
     "avatar": "https://i.pravatar.cc/100?img=19"
   },
   {
@@ -95,8 +95,8 @@
     "phone": "555-678-9012",
     "address": "753 Pine St",
     "department": "Finance",
-    "password": "098765",
-    "secret": "Plays the piano",
+    "password": "T6u7V8w9X0)",
+    "secret": "Plays the piano (10-C)",
     "avatar": "https://i.pravatar.cc/100?img=21"
   },
   {
@@ -105,7 +105,7 @@
     "phone": "555-789-0123",
     "address": "951 Elm St",
     "department": "Sales",
-    "password": "678901",
+    "password": "Y1z2A3b4C5_",
     "secret": "Loves traveling",
     "avatar": "https://i.pravatar.cc/100?img=23"
   },
@@ -115,7 +115,7 @@
     "phone": "555-890-1234",
     "address": "357 Oak St",
     "department": "Marketing",
-    "password": "109876",
+    "password": "D6e7F8g9H0+",
     "secret": "Enjoys photography",
     "avatar": "https://i.pravatar.cc/100?img=25"
   },
@@ -125,7 +125,7 @@
     "phone": "555-901-2345",
     "address": "258 Cedar St",
     "department": "HR",
-    "password": "789012",
+    "password": "I1j2K3l4M5=",
     "secret": "Loves baking",
     "avatar": "https://i.pravatar.cc/100?img=27"
   },
@@ -135,7 +135,7 @@
     "phone": "555-012-3456",
     "address": "147 Birch St",
     "department": "IT",
-    "password": "210987",
+    "password": "N6o7P8q9R0{",
     "secret": "Enjoys running",
     "avatar": "https://i.pravatar.cc/100?img=12"
   },
@@ -145,7 +145,7 @@
     "phone": "555-123-4560",
     "address": "369 Willow St",
     "department": "Finance",
-    "password": "890123",
+    "password": "S1t2U3v4W5}",
     "secret": "Plays tennis",
     "avatar": "https://i.pravatar.cc/100?img=31"
   },
@@ -155,7 +155,7 @@
     "phone": "555-234-5670",
     "address": "753 Maple St",
     "department": "Sales",
-    "password": "321098",
+    "password": "X6y7Z8a9B0[",
     "secret": "Loves fishing",
     "avatar": "https://i.pravatar.cc/100?img=33"
   },
@@ -165,7 +165,7 @@
     "phone": "555-345-6780",
     "address": "951 Spruce St",
     "department": "Marketing",
-    "password": "901234",
+    "password": "C1d2E3f4G5]",
     "secret": "Enjoys yoga",
     "avatar": "https://i.pravatar.cc/100?img=35"
   },
@@ -175,7 +175,7 @@
     "phone": "555-456-7891",
     "address": "357 Pine St",
     "department": "HR",
-    "password": "432109",
+    "password": "H6i7J8k9L0|",
     "secret": "Loves knitting",
     "avatar": "https://i.pravatar.cc/100?img=37"
   },
@@ -185,7 +185,7 @@
     "phone": "555-567-8902",
     "address": "258 Elm St",
     "department": "IT",
-    "password": "012345",
+    "password": "M1n2O3p4Q5~",
     "secret": "Enjoys cycling",
     "avatar": "https://i.pravatar.cc/100?img=39"
   },
@@ -195,7 +195,7 @@
     "phone": "555-678-9013",
     "address": "147 Oak St",
     "department": "Finance",
-    "password": "543210",
+    "password": "R6s7T8u9V0`",
     "secret": "Loves skiing",
     "avatar": "https://i.pravatar.cc/100?img=41"
   }
