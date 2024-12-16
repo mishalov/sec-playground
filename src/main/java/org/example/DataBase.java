@@ -21,7 +21,7 @@ public class DataBase {
 
     public DataBase() throws SQLException, ClassNotFoundException {
         var env = System.getenv();
-        String username = env.get("SEC_PLAYGROUND_DB") != null ? env.get("SEC_PLAYGROUND_DB") : "testDb";
+        String username = env.get("SEC_PLAYGROUND_USER") != null ? env.get("SEC_PLAYGROUND_USER") : "testDb";
         String password = env.get("SEC_PLAYGROUND_PASSWORD") != null ? env.get("SEC_PLAYGROUND_PASSWORD") : "testDb";
         String db = env.get("SEC_PLAYGROUND_DB") != null ? env.get("SEC_PLAYGROUND_DB") : "testDb";
         String jdbcUrl = "jdbc:postgresql://localhost:5432/" + db;
