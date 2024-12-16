@@ -30,8 +30,6 @@ public class Main {
         Security security = new Security(db);
 
         // print
-        System.out.println("Server is running on port 8080");
-
         try {
             server.createContext("/ping", new PingHandler());
             server.createContext("/users", new GetUsersHandler(db));
