@@ -17,6 +17,10 @@ public class Security {
         this.db = db;
     }
 
+    public void reset() {
+        identities.clear();
+    }
+
     public Identity authenticate(String username, String password) {
         try {
             LocalDateTime expirationDate = LocalDateTime.now().plusMinutes(30);

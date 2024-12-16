@@ -29,12 +29,17 @@ public class Main {
         }
         Security security = new Security(db);
 
-        server.createContext("/users", new GetUsersHandler(db));
-        server.createContext("/user", new UpdateUserHandler(db, security));
-        server.createContext("/login", new LoginHandler(db, security));
-        server.createContext("/me", new MeHandler(db, security));
-        // Use this route as a route to some "fake service"
-        server.createContext("/side-service", new SideServiceHandler(new SideServiceDataStorage()));
-        server.start();
+        try {
+            server.createContext("/users", new GetUsersHandler(db));
+            server.createContext("/user", new UpdateUserHandler(db, security));
+            server.createContext("/login", new LoginHandler(db, security));
+            server.createContext("/me", new MeHandler(db, security));
+            server.createContext("/reset", new ResetHandler(db, security));
+            // Use this route as a route to some "fake service"
+            server.createContext("/side-service", new SideServiceHandler(new SideServiceDataStorage()));
+            server.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

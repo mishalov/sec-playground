@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -22,17 +23,24 @@ public class GetUsersHandler extends BasicHandler {
         this.allowCORS(exchange);
 
         ArrayList<PublicUser> users;
-        try {
-            users = db.getUsers();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        JSONArray jsonArray = new JSONArray();
-        for (PublicUser user : users) {
-            jsonArray.put(user.toJson());
-        }
-        String response = jsonArray.toString();
+        String query = exchange.getRequestURI().getQuery();
+        String search = null;
 
-        this.sendResponse(exchange, response.getBytes());
+        if (query != null) {
+            search = java.net.URLDecoder.decode(this.getQueryMap(query).get("search"), StandardCharsets.UTF_8);;
+        }
+
+        try {
+            users = db.getUsers(search);
+            JSONArray jsonArray = new JSONArray();
+            for (PublicUser user : users) {
+                jsonArray.put(user.toJson());
+            }
+            String response = jsonArray.toString();
+
+            this.sendResponse(exchange, response.getBytes());
+        } catch (SQLException e) {
+            this.sendException(exchange, e);
+        }
     }
 }

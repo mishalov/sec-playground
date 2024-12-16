@@ -9,19 +9,24 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Properties;
 
 import org.example.dto.PrivateUser;
 import org.example.dto.PublicUser;
 import org.json.JSONArray;
+import io.github.cdimascio.dotenv.Dotenv;
 
 public class DataBase {
     Connection conn = null;
 
     public DataBase() throws SQLException, ClassNotFoundException {
-        String username = "testDb";
-        String password = "testDb";
-        String jdbcUrl = "jdbc:postgresql://localhost:5432/testDb";
+        Dotenv dotenv = Dotenv.load();
+        var env = System.getenv();
+        String username = env.get("SEC_PLAYGROUND_DB") != null ? env.get("SEC_PLAYGROUND_DB") : dotenv.get("SEC_PLAYGROUND_DB");
+        String password = env.get("SEC_PLAYGROUND_PASSWORD") != null ? env.get("SEC_PLAYGROUND_PASSWORD") : dotenv.get("SEC_PLAYGROUND_PASSWORD");
+        String db = env.get("SEC_PLAYGROUND_DB") != null ? env.get("SEC_PLAYGROUND_DB") : dotenv.get("SEC_PLAYGROUND_DB");
+        String jdbcUrl = "jdbc:postgresql://localhost:5432/" + db;
 
         Properties props = new Properties();
         props.setProperty("user", username);
@@ -56,12 +61,17 @@ public class DataBase {
         }
     }
 
-    public ArrayList<PublicUser> getUsers() throws SQLException {
-        ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM users");
+    public ArrayList<PublicUser> getUsers(String search) throws SQLException {
+        String query = search == null ? "SELECT id, name, avatar FROM users" : "SELECT id, name, avatar FROM users WHERE name LIKE '%" + search + "%'";
+
+        ResultSet rs;
         ArrayList<PublicUser> users = new ArrayList<>();
+
+        rs = conn.createStatement().executeQuery(query);
         while(rs.next()){
             users.add(new PublicUser(rs.getInt("id"), rs.getString("name"), rs.getString("avatar")));
         }
+
         return users;
     }
 

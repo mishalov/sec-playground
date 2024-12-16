@@ -1,6 +1,5 @@
 class API {
     url = 'http://localhost:8080/api';
-
     /**
      * 
      * @param { string } url 
@@ -51,8 +50,12 @@ class API {
         return await response.json();
     }
 
-    async getUsers() {
-        const response = await fetch(`${this.url}/users`, {
+    async getUsers(search) {
+        const urlParam = search ? ("?" + new URLSearchParams({
+            search,
+        }).toString()) : ""
+
+        const response = await fetch(`${this.url}/users${urlParam}`, {
             method: 'GET',
             headers: this.buildHeaders()
         });
